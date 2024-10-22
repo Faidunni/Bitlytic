@@ -7,10 +7,16 @@ export default {
     extend: {
       colors: {
         primary: "#faf8f7",
-        secondary: "#353535",
-        dark: "#222222",
-        background: "#faf8f7",
-        text: "#333",
+        dark: "#68696b",
+        text: "#000",
+        // Dark theme colors
+        darktheme: {
+          primary: "#1a1a1a",
+          secondary: "#333333",
+          accent: "#4a4a4a",
+          text: "#e0e0e0",
+          background: "#121212",
+        },
       },
       gridTemplateColumns: {
         // Define your custom column layout

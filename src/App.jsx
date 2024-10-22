@@ -7,12 +7,12 @@ import { Routes, Route } from "react-router-dom";
 function App() {
   return (
     <>
-      <div className="flex">
+      <div className="flex ">
         {/* Navigation bar */}
         <NavigationBar />
 
         {/* Main content */}
-        <main className="container mx-auto bg-[#faf8f7]">
+        <main className="container mx-auto dark:bg-darktheme-background bg-primary">
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/coin/:coinId" element={<Coin />} />
