@@ -74,8 +74,8 @@ function Coin() {
         </div>
 
         {/* Coin data */}
-        <div className="bg-white mt-20 mx-8 p-4 rounded-lg flex space-x-2 items-center">
-          <div>
+        <div className="bg-white mt-20 mx-8 p-4 rounded-lg items-center dark:bg-darktheme-secondary">
+          <div className="flex flex-col items-center">
             <img src={coinData.image.large} alt={coinData.name} />
             <p>
               {coinData.name} ({coinData.symbol.toUpperCase()})
@@ -92,7 +92,10 @@ function Coin() {
 
           {/* Historical data chart */}
           <div className="mt-4">
-            <LineChart chartData={historicalData} />
+            <LineChart
+              chartData={historicalData}
+              className="dark:bg-darktheme-primary"
+            />
           </div>
         </div>
       </>
