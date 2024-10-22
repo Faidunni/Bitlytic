@@ -87,8 +87,9 @@ const NavigationBar = () => {
         <span className={isExpanded ? "block" : "hidden"}> Bitlytic</span>
       </div>
 
+      {/* desktop view */}
       {/* navigation links */}
-      <ul className="mt-10 flex-col space-y-8">
+      <ul className="mt-10 flex-col space-y-8 sm:block hidden">
         {navLinks.map((link, index) => (
           <Link to={"/"} key={index}>
             <li
@@ -109,6 +110,9 @@ const NavigationBar = () => {
           </Link>
         ))}
       </ul>
+
+      {/* mobile view */}
+      {/* navigation links */}
 
       {/* dark mode */}
       <button
