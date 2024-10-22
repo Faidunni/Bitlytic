@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import logo from "../assets/logo.png";
-import DarkMode from "./DarkMode";
+
+import { IoToggle } from "react-icons/io5";
 import {
   LayoutDashboard,
   Activity,
@@ -45,21 +46,39 @@ const variants = {
 };
 
 const NavigationBar = () => {
+  // framer motion state
   const [activeLink, setActiveLink] = useState(0);
   const [isExpanded, setIsExpanded] = useState(true);
+
+  // dark mode state
+  const [theme, setTheme] = useState("light");
+
+  // dark mode effect
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [theme]);
+
+  // dark mode toggle
+  const toggleDarkMode = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
 
   return (
     <motion.header
       animate={isExpanded ? "expanded" : "collapsed"}
       variants={variants}
       className={
-        "py-12 flex flex-col border border-r-2 w-1/5 h-screen relative" +
+        "py-12 flex flex-col border border-r-1 w-1/5  relative dark:text-darktheme-text dark:bg-darktheme-background" +
         (isExpanded ? " px-10" : " px-[16px] duration-500")
       }
     >
       {/* sidebar icon */}
       <div
-        className="w-6 h-6 bg-purple-600 rounded-full absolute top-14 -right-3"
+        className="w-6 h-6 bg-purple-600 rounded-full absolute top-14 -right-3 dark:bg-purple-800"
         onClick={() => setIsExpanded(!isExpanded)}
       >
         <ChevronRight className=" text-white font-extrabold px-1" />
@@ -71,17 +90,17 @@ const NavigationBar = () => {
         <span className={isExpanded ? "block" : "hidden"}> Bitlytic</span>
       </div>
 
-      {/* navigation link */}
-      <ul className="mt-10 flex-col space-y-8 ">
+      {/* navigation links */}
+      <ul className="mt-10 flex-col space-y-8">
         {navLinks.map((link, index) => (
           <li
             key={index}
             className={
               "flex items-center mt-4 cursor-pointer space-x-2" +
               (activeLink === index
-                ? " bg-purple-600 text-white rounded-lg font-semibold "
+                ? " bg-purple-600 text-white rounded-lg font-semibold dark:bg-purple-800"
                 : "") +
-              (isExpanded ? " p-2" : "p-1")
+              (isExpanded ? " p-2" : "p-1 duration-500")
             }
             onClick={() => setActiveLink(index)}
           >
@@ -92,7 +111,16 @@ const NavigationBar = () => {
       </ul>
 
       {/* dark mode */}
-      <DarkMode />
+      <button
+        className={
+          "flex items-center space-x-2 mt-5 cursor-pointer hover:bg-primary rounded-lg font-semibold " +
+          (isExpanded ? "p-2" : "p-1")
+        }
+        onClick={toggleDarkMode}
+      >
+        <IoToggle className={isExpanded ? "w-6 h-6" : "w-8 h-6"} />
+        <p className={isExpanded ? "block" : "hidden"}>Dark Mode</p>
+      </button>
     </motion.header>
   );
 };
