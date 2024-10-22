@@ -1,9 +1,16 @@
 import { getCoin } from "../data";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-function FetchCoin({ searchTerm }) {
+function FetchCoin({ searchTerm, currency }) {
   const [coins, setCoins] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [currencyValue, setCurrencyValue] = useState({
+    name: "usd",
+    Symbol: "$",
+  });
+
+  // pagination
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(8);
 
@@ -16,7 +23,7 @@ function FetchCoin({ searchTerm }) {
 
   useEffect(() => {
     fetchCoin(currentPage);
-  }, [currentPage]);
+  }, [currentPage, searchTerm, currency]);
 
   // Filter the coins based on the search term
   const filteredCoins = coins.filter(
@@ -45,7 +52,7 @@ function FetchCoin({ searchTerm }) {
           onClick={() => handlePageChange(i)}
           className={`mt-6 px-3 py-1 mx-1 rounded ${
             currentPage === i
-              ? "bg-purple-600 text-white dark:bg-purple-800"
+              ? "bg-purple-600 text-white dark:bg-purple-800 rounded-full"
               : "bg-gray-200 dark:bg-darktheme-accent"
           }`}
         >
@@ -63,15 +70,16 @@ function FetchCoin({ searchTerm }) {
         <p>#</p>
         <p>Token</p>
         <p>Price</p>
-        <p>Market Cap</p>
         <p>Vol(24H)</p>
+        <p>Market Cap</p>
       </div>
 
       {loading ? (
         <p>Loading...</p>
       ) : (
         filteredCoins.map((coin, index) => (
-          <div
+          <Link
+            to={`../Coin/${coin.id}`}
             key={coin.id}
             className="grid grid-cols-custom-layout gap-4 px-6 py-3 rounded-lg items-center border-b-[1px] border-primary"
           >
@@ -85,9 +93,19 @@ function FetchCoin({ searchTerm }) {
               <p>{coin.name}</p>
             </div>
             <p>${coin.current_price.toLocaleString()}</p>
-            <p>${coin.market_cap.toLocaleString()}</p>
-            <p>${coin.total_volume.toLocaleString()}</p>
-          </div>
+            <p
+              className={
+                coin.price_change_percentage_24h > 0
+                  ? "text-green-600"
+                  : "text-red-600"
+              }
+            >
+              {Math.floor(coin.price_change_percentage_24h * 100) / 100}
+            </p>
+            <p>
+              {currencyValue.Symbol} {coin.market_cap.toLocaleString()}
+            </p>
+          </Link>
         ))
       )}
       {renderPageNumbers()}

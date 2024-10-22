@@ -20,7 +20,7 @@ export default {
       },
       gridTemplateColumns: {
         // Define your custom column layout
-        "custom-layout": "0.5fr 2fr 1fr 1.5fr 1.5fr",
+        "custom-layout": "0.5fr 2fr 1fr 1fr 1.5fr",
       },
     },
   },

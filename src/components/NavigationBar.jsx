@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import logo from "../assets/logo.png";
+import { Link } from "react-router-dom";
 
 import { IoToggle } from "react-icons/io5";
 import {
@@ -16,22 +17,18 @@ const navLinks = [
   {
     name: "Dashboard",
     icon: LayoutDashboard,
-    // <LayoutDashboard />
   },
   {
     name: "Activity",
     icon: Activity,
-    // <Activity />
   },
   {
     name: "Analytics",
     icon: ChartNoAxesCombined,
-    // <ChartNoAxesCombined />
   },
   {
     name: "Transactions",
     icon: ArrowRightLeft,
-    // <ArrowRightLeft />
   },
 ];
 
@@ -72,7 +69,7 @@ const NavigationBar = () => {
       animate={isExpanded ? "expanded" : "collapsed"}
       variants={variants}
       className={
-        "py-12 flex flex-col border border-r-1 w-1/5  relative dark:text-darktheme-text dark:bg-darktheme-background" +
+        "py-12 flex flex-col border border-r-1 w-1/5 relative dark:text-darktheme-text dark:bg-darktheme-background" +
         (isExpanded ? " px-10" : " px-[16px] duration-500")
       }
     >
@@ -93,20 +90,23 @@ const NavigationBar = () => {
       {/* navigation links */}
       <ul className="mt-10 flex-col space-y-8">
         {navLinks.map((link, index) => (
-          <li
-            key={index}
-            className={
-              "flex items-center mt-4 cursor-pointer space-x-2" +
-              (activeLink === index
-                ? " bg-purple-600 text-white rounded-lg font-semibold dark:bg-purple-800"
-                : "") +
-              (isExpanded ? " p-2" : "p-1 duration-500")
-            }
-            onClick={() => setActiveLink(index)}
-          >
-            <link.icon className="w-6 h-6" />
-            <span className={isExpanded ? "block" : "hidden"}>{link.name}</span>
-          </li>
+          <Link to={"/"} key={index}>
+            <li
+              className={
+                "flex items-center mt-4 cursor-pointer space-x-2" +
+                (activeLink === index
+                  ? " bg-purple-600 text-white rounded-lg font-semibold dark:bg-purple-800"
+                  : "") +
+                (isExpanded ? " p-2" : "p-3 duration-500")
+              }
+              onClick={() => setActiveLink(index)}
+            >
+              <link.icon className="w-6 h-6" />
+              <span className={isExpanded ? "block" : "hidden"}>
+                {link.name}
+              </span>
+            </li>
+          </Link>
         ))}
       </ul>
 

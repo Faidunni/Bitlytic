@@ -7,7 +7,7 @@ import { Routes, Route } from "react-router-dom";
 function App() {
   return (
     <>
-      <div className="flex ">
+      <div className="flex">
         {/* Navigation bar */}
         <NavigationBar />
 
