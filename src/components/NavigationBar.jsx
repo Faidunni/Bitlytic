@@ -18,22 +18,18 @@ const navLinks = [
   {
     name: "Dashboard",
     icon: LayoutDashboard,
-    path: "/",
   },
   {
     name: "Activity",
     icon: Activity,
-    path: "/activity",
   },
   {
     name: "Analytics",
     icon: ChartNoAxesCombined,
-    path: "/analytics",
   },
   {
     name: "Transactions",
     icon: ArrowRightLeft,
-    path: "/transactions",
   },
 ];
 
@@ -102,7 +98,7 @@ const NavigationBar = () => {
       {/* navigation links */}
       <ul className="mt-10 flex-col space-y-8">
         {navLinks.map((link, index) => (
-          <Link to={link.path} key={index}>
+          <Link to={"/"} key={index}>
             <li
               className={
                 "flex items-center mt-4 cursor-pointer space-x-2" +
