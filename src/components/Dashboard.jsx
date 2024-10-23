@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { FaSearch } from "react-icons/fa";
+import { FaSearch } from "/react-icons/fa";
 import FetchCoin from "./FetchCoin";
 import { HandCoins } from "lucide-react";
 import { Moon } from "lucide-react";
