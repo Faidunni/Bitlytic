@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { IoToggle } from "react-icons/io5";
 import { Moon, SunMoon } from "lucide-react";
 
 import {
