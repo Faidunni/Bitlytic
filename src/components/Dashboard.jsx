@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { FaSearch } from "/react-icons/fa";
+import { Search } from "lucide-react";
 import FetchCoin from "./FetchCoin";
 import { HandCoins } from "lucide-react";
 import { Moon } from "lucide-react";
@@ -59,7 +59,7 @@ function Dashboard() {
             onChange={handleSearchChange} // Trigger filtering on keyup
           />
           <button className="absolute mx-6">
-            <FaSearch />
+            <Search />
           </button>
         </form>
 
