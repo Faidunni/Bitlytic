@@ -1,3 +1,6 @@
+import { m } from "framer-motion";
+import { Md10K } from "react-icons/md";
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
@@ -21,6 +24,8 @@ export default {
       gridTemplateColumns: {
         // Define your custom column layout
         "custom-layout": "0.5fr 2fr 1fr 1fr 1.5fr",
+        "mobile-layout": "0.5fr 2fr 1fr",
+        "medium-layout": "0.5fr 2fr 1.5fr 1fr",
       },
     },
   },

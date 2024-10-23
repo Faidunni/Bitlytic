@@ -63,6 +63,7 @@ function LineChart({ chartData }) {
       },
     },
     // Line color set to purple-600
+    colors: ["#7e22ce"],
     titlePosition: "center", // Center the title
     backgroundColor: "transparent", // Transparent background for dark mode compatibility
     chartArea: {

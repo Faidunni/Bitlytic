@@ -63,10 +63,10 @@ function Coin() {
   if (coinData && historicalData) {
     return (
       <>
-        <div className="my-6 mx-8 ">
+        <div className="my-6 mx-8">
           {/* Home button */}
           <Link to={"/"}>
-            <button className="bg-purple-600 flex text-white py-2 px-4 items-center space-x-2 rounded-lg absolute right-10 dark:bg-purple-800">
+            <button className="bg-purple-600 flex text-white py-2 px-4 items-center space-x-2 rounded-lg absolute lg:right-10 right-2 dark:bg-purple-800">
               <ArrowLeft />
               <p className="font-semibold">Go back</p>
             </button>
@@ -74,7 +74,7 @@ function Coin() {
         </div>
 
         {/* Coin data */}
-        <div className="bg-white mt-20 mx-8 p-4 rounded-lg items-center dark:bg-darktheme-secondary">
+        <div className="bg-white mt-20 lg:mx-8 mx-2 p-4 rounded-lg items-center dark:bg-darktheme-secondary">
           <div className="flex flex-col items-center">
             <img src={coinData.image.large} alt={coinData.name} />
             <p>
