@@ -4,6 +4,7 @@ import FetchCoin from "./FetchCoin";
 import { HandCoins } from "lucide-react";
 import { Moon } from "lucide-react";
 import { SunMoon } from "lucide-react";
+import logo from "../assets/Bitlytic.png";
 
 function Dashboard() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -42,9 +43,10 @@ function Dashboard() {
   return (
     <div className="my-6 lg:mx-8 mx-2">
       <div className="flex justify-between space-x-4 lg:space-x-0">
-        <h2 className="text-2xl font-semibold dark:text-darktheme-text">
+        <h2 className="text-2xl font-semibold dark:text-darktheme-text lg:block hidden">
           Dashboard
         </h2>
+        <img src={logo} alt="" className="w-[100px] lg:hidden" />
         <form
           className="relative flex items-center w-[45%]"
           onSubmit={handleSearchSubmit}

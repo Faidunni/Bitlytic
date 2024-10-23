@@ -10,7 +10,8 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { motion } from "framer-motion";
-import logo from "../assets/logo.png";
+import logo from "../assets/Bitlytic.png";
+import icon from "../assets/Bitlytic-icon.png";
 
 // navigation bar component
 const navLinks = [
@@ -90,11 +91,11 @@ const NavigationBar = () => {
 
       {/* logo */}
       <div className="flex items-center">
-        <img src={logo} alt="Bitlytic logo" className="w-[40px]" />
-        <span className={isExpanded ? "block" : "hidden"}>
-          {" "}
-          <h1 className="text-2xl font-semibold">Bitlytic</h1>
-        </span>
+        {isExpanded ? (
+          <img src={logo} alt="Bitlytic logo" className="w-[120px]" />
+        ) : (
+          <img src={icon} alt="Bitlytic logo" className="w-[35px]" />
+        )}
       </div>
 
       {/* desktop view */}
