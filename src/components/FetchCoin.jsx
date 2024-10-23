@@ -83,7 +83,9 @@ function FetchCoin({ searchTerm, currency }) {
 
       {/* desktop view */}
       {loading ? (
-        <p className="lg:block hidden">Loading...</p>
+        <div className="flex items-center justify-center h-screen">
+          <div className="w-16 h-16 border-4 border-t-transparent border-purple-600 rounded-full animate-spin"></div>
+        </div>
       ) : (
         filteredCoins.map((coin, index) => (
           <Link

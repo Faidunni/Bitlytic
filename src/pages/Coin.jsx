@@ -57,7 +57,11 @@ function Coin() {
   }, [coinId]);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <div className="w-16 h-16 border-4 border-t-transparent border-purple-600 rounded-full animate-spin"></div>
+      </div>
+    );
   }
 
   if (coinData && historicalData) {
@@ -88,6 +92,44 @@ function Coin() {
             >
               {coinData.links.homepage}
             </a>
+          </div>
+
+          {/* coinData grid */}
+          <div className="grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-6 my-10">
+            <div className="bg-primary dark:bg-darktheme-background p-4 rounded-lg text-center">
+              <p className="text-lg font-semibold dark:text-darktheme-text">
+                Current Price
+              </p>
+              <p className="text-xl md:text-2xl text-purple-600">
+                ${coinData.market_data.current_price.usd.toLocaleString()}
+              </p>
+            </div>
+            <div className="bg-primary dark:bg-darktheme-background p-4 rounded-lg text-center dark:text-darktheme-text">
+              <p className=" font-semibold">Market Cap</p>
+              <p className="md:text-2xl">
+                ${coinData.market_data.market_cap.usd.toLocaleString()}
+              </p>
+            </div>
+            <div className="bg-primary dark:bg-darktheme-background p-4 rounded-lg text-center">
+              <p className="text-lg font-semibold dark:text-darktheme-text">
+                24h Change
+              </p>
+              <p
+                className={`text-xl md:text-2xl ${
+                  coinData.market_data.price_change_percentage_24h >= 0
+                    ? "text-green-500"
+                    : "text-red-500"
+                }`}
+              >
+                {coinData.market_data.price_change_percentage_24h.toFixed(2)}%
+              </p>
+            </div>
+            <div className="bg-primary dark:bg-darktheme-background dark:text-darktheme-text p-4 rounded-lg text-center">
+              <p className="text-lg font-semibold">Total Volume</p>
+              <p className="text-xl md:text-2xl">
+                ${coinData.market_data.total_volume.usd.toLocaleString()}
+              </p>
+            </div>
           </div>
 
           {/* Historical data chart */}
